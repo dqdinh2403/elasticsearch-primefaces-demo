@@ -1,0 +1,32 @@
+{
+	"properties": {
+	  	"id": {
+	  		"type": "integer"
+	  	},
+	  	"fullName": {
+	  		"type": "text",
+	  		"copy_to": "fullText"
+	  	},
+	  	"yearOfBirth": {
+	  		"type": "integer",
+	  		"copy_to": "fullText"
+	  	},
+	  	"emails": {
+	  		"type": "text",
+	  		"copy_to": "fullText"
+	  	},
+	  	"phones": {
+	  		"type": "text",
+	  		"copy_to": "fullText"
+	  	},
+	  	"skype": {
+	  		"type": "text",
+	  		"copy_to": "fullText"
+	  	},
+	  	"fullText": {
+	  		"type": "text",
+	  		"fielddata": "true",
+	  		"analyzer": "full_text_analyzer"
+	  	}
+  	}
+}

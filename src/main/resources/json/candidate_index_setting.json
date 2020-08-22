@@ -1,0 +1,15 @@
+{
+	"settings": {
+		"analysis": {
+			"analyzer": {
+				"full_text_analyzer": {
+					"type": "custom",
+					"tokenizer": "standard",
+					"filter": [
+						"lowercase"
+					]
+				}
+			}
+		}
+	}
+}

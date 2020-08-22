@@ -1,0 +1,98 @@
+ <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<h:head>
+		<link rel="shortcut icon" type="image/x-icon" href="#{resource['icons/apple-rainbow.ico']}"></link>
+		<title>Project Kick Off</title>
+	</h:head>
+	<h:body>
+		<h:form id="testingForm">
+			<p:commandButton value="Add News Button 1"
+				action="#{testingBean.doAddNews1()}">
+			</p:commandButton>
+			
+			<p:commandButton value="Find News Button 1"
+				action="#{testingBean.doFindNews1()}">
+			</p:commandButton>
+			
+			<p:commandButton value="Add News Button 2"
+				action="#{testingBean.doAddNews2()}">
+			</p:commandButton>
+			
+			<p:commandButton value="Find News Button 2"
+				action="#{testingBean.doFindNews2()}">
+			</p:commandButton>
+			
+			
+			<br/> <br/>
+			
+			<h:outputText value="@OneToOne unidirectional: " escape="false"></h:outputText>
+			
+			<p:commandButton value="Create"
+				action="#{testingBean.doCreateCustomer()}">
+			</p:commandButton>
+			
+			<p:commandButton value="Find"
+				action="#{testingBean.doFindCustomer()}">
+			</p:commandButton>
+			
+			
+			<br/> <br/>
+			
+			<h:outputText value="@OneToMany unidirectional: " escape="false"></h:outputText>
+			
+			<p:commandButton value="Create"
+				action="#{testingBean.doCreateOrder()}">
+			</p:commandButton>
+			
+			<p:commandButton value="Find"
+				action="#{testingBean.doFindOrder()}">
+			</p:commandButton>
+			
+			
+			<br/> <br/>
+			
+			<h:outputText value="@ManyToMany bidirectional: " escape="false"></h:outputText>
+			
+			<p:commandButton value="Create Artist"
+				action="#{testingBean.doCreateArtist()}">
+			</p:commandButton>
+			
+			<p:commandButton value="Find Artist"
+				action="#{testingBean.doFindArtist()}">
+			</p:commandButton>
+			
+			<p:commandButton value="Find CD"
+				action="#{testingBean.doFindCD()}">
+			</p:commandButton>
+			
+			
+			<br/> <br/>
+			
+			<h:outputText value="@OrderBy postedDate DESC: " escape="false"></h:outputText>
+			
+			<p:commandButton value="Create"
+				action="#{testingBean.doCreatePost()}">
+			</p:commandButton>
+			
+			<p:commandButton value="Find"
+				action="#{testingBean.doFindPost()}">
+			</p:commandButton>
+			
+			
+			<br/> <br/>
+			
+			<h:outputText value="@OrderColumn: " escape="false"></h:outputText>
+			
+			<p:commandButton value="Create"
+				action="#{testingBean.doCreatePost2()}">
+			</p:commandButton>
+			
+			<p:commandButton value="Find"
+				action="#{testingBean.doFindPost2()}">
+			</p:commandButton>
+		</h:form>
+	</h:body>
+</html>

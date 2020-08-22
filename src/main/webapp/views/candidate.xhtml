@@ -1,0 +1,88 @@
+ <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<h:head>
+		<link rel="shortcut icon" type="image/x-icon" href="#{resource['icons/apple-rainbow.ico']}"></link>
+		<title>Project Kick Off</title>
+		<h:outputStylesheet library="scss_compiled" name="style.css"></h:outputStylesheet>
+	</h:head>
+	<h:body>
+		<h2 class="candidate-page-title">Candidates
+			<p:link outcome="candidate2" value="(New Version)"></p:link>
+		</h2>
+		
+		<div class="ui-g">
+			<div class="ui-g-3 candidate-add">
+				<h3 class="candidate-heading">Add Candidate</h3>
+				
+				<h:form id="candidateAddForm">
+					<p:outputLabel for="fullNameAdd" value="Full Name:"></p:outputLabel>
+					<p:inputText id="fullNameAdd" value="#{candidateBean.fullName}"></p:inputText>
+					<br/>
+					<p:outputLabel for="yearOfBirthAdd" value="Year Of Birth:"></p:outputLabel>
+					<p:inputText id="yearOfBirthAdd" value="#{candidateBean.yearOfBirth}"></p:inputText>
+					<br/>
+					<p:commandButton value="Add"
+						action="#{candidateBean.doAddCandidate()}"
+						update="candidateAddForm candidateListForm"></p:commandButton>
+				</h:form>
+			</div>
+			
+			<div class="ui-g-6 candidate-list">
+				<h3 class="candidate-heading">List Candidate</h3>
+				
+				<h:form id="candidateListForm">
+					<p:dataTable id="candidateList" styleClass="candidate-datatable"
+						sortBy="#{candidate.updatedDate}" sortOrder="descending"
+						selectionMode="single" selection="#{candidateBean.selectedCandidate}" rowKey="#{candidate.id}"
+						paginator="true" paginatorPosition="top"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+	                	rows="10" rowsPerPageTemplate="5,10,15"
+	                	currentPageReportTemplate="Showing {startRecord}-{endRecord} out of {totalRecords}"
+						value="#{candidateBean.candidates}" var="candidate">
+						
+						<p:ajax event="rowSelect" update="candidateUpdateForm"></p:ajax>
+						
+						<p:column headerText="ID" styleClass="candidate-id"
+							sortBy="#{candidate.id}">
+							<h:outputText value="#{candidate.id}"></h:outputText>
+						</p:column>
+						
+						<p:column headerText="Updated Date" styleClass="candidate-updated-date"
+							sortBy="#{candidate.updatedDate}">
+							<h:outputText value="#{candidate.updatedDate}" converter="updatedDateConverter"></h:outputText>
+						</p:column>
+						
+						<p:column headerText="Full Name" styleClass="candidate-full-name"
+							sortBy="#{candidate.fullName}">
+							<h:outputText value="#{candidate.fullName}"></h:outputText>
+						</p:column>
+						
+						<p:column headerText="YOB" styleClass="candidate-year-of-birth"
+							sortBy="#{candidate.yearOfBirth}">
+							<h:outputText value="#{candidate.yearOfBirth}"></h:outputText>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</div>
+			
+			<div class="ui-g-3 candidate-update">
+				<h3 class="candidate-heading">Update Candidate</h3>
+				
+				<h:form id="candidateUpdateForm">
+					<p:outputLabel for="fullNameUpdate" value="Full Name:"></p:outputLabel>
+					<p:inputText id="fullNameUpdate" value="#{candidateBean.selectedCandidate.fullName}"></p:inputText>
+					<br/>
+					<p:outputLabel for="yearOfBirthUpdate" value="Year Of Birth:"></p:outputLabel>
+					<p:inputText id="yearOfBirthUpdate" value="#{candidateBean.selectedCandidate.yearOfBirth}"></p:inputText>
+					<br/>
+					<p:commandButton value="Update"
+						action="#{candidateBean.doUpdateCandidate()}"
+						update="candidateUpdateForm candidateListForm"></p:commandButton>
+				</h:form>
+			</div>
+		</div>
+	</h:body>
+</html>
